@@ -10,7 +10,7 @@ import pro.sky.java.course2.calculator.service.CalculatorService;
 @RequestMapping("/calculator")
 public class CalculatorController {
 
-    public final CalculatorService calculatorService;
+    private final CalculatorService calculatorService;
 
     public CalculatorController(CalculatorService calculatorService) {
         this.calculatorService = calculatorService;
