@@ -19,7 +19,7 @@ class CalculatorServiceImplParameterizedTest {
             "3, -10, -7",
             "100, -100, 0"
     })
-    public void parameterizedTestCalculatePlus(int a, int b, int expected) {
+    public void testCalculatePlus(int a, int b, int expected) {
         int actual = calculatorService.calculatePlus(a,b);
         assertEquals(expected, actual);
     }
@@ -30,21 +30,21 @@ class CalculatorServiceImplParameterizedTest {
             "3, -10, 13",
             "100, -100, 200"
     })
-    public void parameterizedTestCalculateMinus(int a, int b, int expected) {
+    public void testCalculateMinus(int a, int b, int expected) {
         int actual = calculatorService.calculateMinus(a,b);
         assertEquals(expected, actual);
     }
 
     @ParameterizedTest
     @MethodSource("provideParamsForMultiplyTest")
-    public void parameterizedTestCalculateMultiply(int a, int b, int expected) {
+    public void testCalculateMultiply(int a, int b, int expected) {
         int actual = calculatorService.calculateMultiply(a,b);
         assertEquals(expected, actual);
     }
 
     @ParameterizedTest
     @MethodSource("provideParamsForDivideTest")
-    public void parameterizedTestCalculateDivide(int a, int b, double expected) {
+    public void testCalculateDivide(int a, int b, double expected) {
         double actual = calculatorService.calculateDivide(a,b);
         assertEquals(expected, actual);
     }
