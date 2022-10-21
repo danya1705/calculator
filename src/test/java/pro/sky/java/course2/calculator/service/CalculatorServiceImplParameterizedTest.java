@@ -15,53 +15,45 @@ class CalculatorServiceImplParameterizedTest {
 
     @ParameterizedTest
     @CsvSource({
-            "5, 10, 15",
-            "3, -10, -7",
-            "100, -100, 0"
+            "5, 10",
+            "3, -10",
+            "100, -100"
     })
-    public void testCalculatePlus(int a, int b, int expected) {
-        int actual = calculatorService.calculatePlus(a,b);
-        assertEquals(expected, actual);
+    public void testCalculatePlus(int a, int b) {
+        int actual = calculatorService.calculatePlus(a, b);
+        assertEquals(a + b, actual);
     }
 
     @ParameterizedTest
     @CsvSource({
-            "5, 10, -5",
-            "3, -10, 13",
-            "100, -100, 200"
+            "5, 10",
+            "3, -10",
+            "100, -100"
     })
-    public void testCalculateMinus(int a, int b, int expected) {
-        int actual = calculatorService.calculateMinus(a,b);
-        assertEquals(expected, actual);
+    public void testCalculateMinus(int a, int b) {
+        int actual = calculatorService.calculateMinus(a, b);
+        assertEquals(a - b, actual);
     }
 
     @ParameterizedTest
-    @MethodSource("provideParamsForMultiplyTest")
-    public void testCalculateMultiply(int a, int b, int expected) {
-        int actual = calculatorService.calculateMultiply(a,b);
-        assertEquals(expected, actual);
+    @MethodSource("provideParamsForTest")
+    public void testCalculateMultiply(int a, int b) {
+        int actual = calculatorService.calculateMultiply(a, b);
+        assertEquals(a * b, actual);
     }
 
     @ParameterizedTest
-    @MethodSource("provideParamsForDivideTest")
-    public void testCalculateDivide(int a, int b, double expected) {
-        double actual = calculatorService.calculateDivide(a,b);
-        assertEquals(expected, actual);
+    @MethodSource("provideParamsForTest")
+    public void testCalculateDivide(int a, int b) {
+        double actual = calculatorService.calculateDivide(a, b);
+        assertEquals((double) a / b, actual);
     }
 
-    public static Stream<Arguments> provideParamsForMultiplyTest() {
+    public static Stream<Arguments> provideParamsForTest() {
         return Stream.of(
-                Arguments.of(5,10,50),
-                Arguments.of(3,-10,-30),
-                Arguments.of(100,0,0)
-        );
-    }
-
-    public static Stream<Arguments> provideParamsForDivideTest() {
-        return Stream.of(
-                Arguments.of(5,10,0.5),
-                Arguments.of(3,-10,-0.3),
-                Arguments.of(100,2,50)
+                Arguments.of(5, 10),
+                Arguments.of(3, -10),
+                Arguments.of(100, 2)
         );
     }
 }
